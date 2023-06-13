@@ -71,7 +71,7 @@ ENV PYTHONUNBUFFERED 1
 # Download Go packages
 RUN go install -v github.com/hakluke/hakrawler@latest
 
-RUN GO111MODULE=on go install -v -v github.com/bp0lr/gauplus@latest
+RUN GO111MODULE=on go install -v github.com/lc/gau/v2/cmd/gau@latest
 
 RUN GO111MODULE=on go install -v github.com/jaeles-project/gospider@latest
 
