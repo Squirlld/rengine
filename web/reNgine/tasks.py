@@ -1441,7 +1441,7 @@ def fetch_endpoints(
 
 	# check yaml settings
 	if ALL in yaml_configuration[FETCH_URL][USES_TOOLS]:
-		tools = 'gauplus hakrawler waybackurls gospider'
+		tools = 'gau hakrawler waybackurls gospider'
 	else:
 		tools = ' '.join(
 			str(tool) for tool in yaml_configuration[FETCH_URL][USES_TOOLS])
@@ -1457,7 +1457,7 @@ def fetch_endpoints(
 	sorted_subdomains_path = results_dir + '/sorted_subdomain_collection.txt'
 
 	for tool in tools.split(' '):
-		if tool == 'gauplus' or tool == 'hakrawler' or tool == 'waybackurls':
+		if tool == 'gau' or tool == 'hakrawler' or tool == 'waybackurls':
 			if subdomain:
 				subdomain_url = subdomain.http_url if subdomain.http_url else 'https://' + subdomain.name
 				input_target = 'echo {}'.format(subdomain_url)
@@ -1467,14 +1467,14 @@ def fetch_endpoints(
 				input_target = 'echo {}'.format(domain_name)
 
 		if tool == 'gauplus':
-			logger.info('Running Gauplus')
-			gauplus_command = '{} | gauplus --random-agent | grep -Eo {} > {}/urls_gau.txt'.format(
+			logger.info('Running Gau')
+			gauplus_command = '{} | gau --random-agent | grep -Eo {} > {}/urls_gau.txt'.format(
 				input_target,
 				valid_url_of_domain_regex,
 				results_dir
 			)
-			logger.info(gauplus_command)
-			os.system(gauplus_command)
+			logger.info(gau_command)
+			os.system(gau_command)
 
 		elif tool == 'hakrawler':
 			logger.info('Running hakrawler')
