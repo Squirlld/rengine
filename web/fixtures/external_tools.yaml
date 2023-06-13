@@ -121,8 +121,8 @@
     github_url: https://github.com/ffuf/ffuf
     license_url: https://github.com/ffuf/ffuf/blob/master/LICENSE
     version_lookup_command: ffuf -V
-    update_command: go install -v github.com/ffuf/ffuf@latest
-    install_command: ''
+    update_command: go install -v github.com/ffuf/ffuf/v2@latest
+    install_command: go install -v github.com/ffuf/ffuf/v2@latest
     version_match_regex: (\d+\.)?(\d+\.)?(\*|\d+)
     is_default: true
     is_subdomain_gathering: false
@@ -190,18 +190,18 @@
   pk: 11
   fields:
     logo_url: null
-    name: gauplus
+    name: gau
     description: Get all URLs
-    github_url: https://github.com/bp0lr/gauplus
-    license_url: https://github.com/bp0lr/gauplus/blob/main/LICENSE
-    version_lookup_command: null
-    update_command: go install -v -v github.com/bp0lr/gauplus@latest
-    install_command: go install -v -v github.com/bp0lr/gauplus@latest
+    github_url: https://github.com/lc/gau
+    license_url: https://github.com/lc/gau/blob/master/LICENSE
+    version_lookup_command: gau --version
+    update_command: go install -v github.com/lc/gau/v2/cmd/gau@latest
+    install_command: go install -v github.com/lc/gau/v2/cmd/gau@latest
     version_match_regex: '[vV]*(\d+\.)?(\d+\.)?(\*|\d+)'
     is_default: true
     is_subdomain_gathering: false
     is_github_cloned: true
-    github_clone_path: /usr/src/github/gauplus
+    github_clone_path: /usr/src/github/gau
     subdomain_gathering_command: null
 - model: scanEngine.installedexternaltool
   pk: 12
@@ -232,7 +232,7 @@
       names, subdomains, IPs and URLs using multiple public data sources.
     github_url: https://github.com/laramies/theHarvester
     license_url: null
-    version_lookup_command: cd /usr/src/github/theHarvester/theHarvester/lib/;python3 -c 'from version import version;print(version())'
+    version_lookup_command: python3 /usr/src/github/theHarvester/theHarvester.py
     update_command: git pull
     install_command: git clone https://github.com/laramies/theHarvester
     version_match_regex: (\d+\.)?(\d+\.)?(\*|\d+)
