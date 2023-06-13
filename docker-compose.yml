@@ -3,7 +3,7 @@ version: '3.8'
 services:
   db:
     restart: always
-    image: "postgres:12.3-alpine"
+    image: "postgres:15-alpine"
     environment:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
@@ -115,6 +115,7 @@ services:
       rengine_network:
         aliases:
           - rengine
+
 
   tor:
     image: peterdavehello/tor-socks-proxy
