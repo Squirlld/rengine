@@ -24,7 +24,7 @@
       false\r\n  follow_redirect: false\r\n  auto_calibration: false\r\n  timeout:
       10\r\n  # delay: \"0.1-0.2\"\r\n  # match_http_status: '200, 204'\r\n  # max_time:
       0\r\n  recursive: false\r\n  recursive_level: 1\r\n\r\nfetch_url:\r\n  uses_tools:
-      [ gauplus, hakrawler, waybackurls, gospider ]\r\n  intensity: normal\r\n  #
+      [ gau, hakrawler, waybackurls, gospider ]\r\n  intensity: normal\r\n  #
       intensity: deep\r\n  ignore_file_extension: [jpg, png, jpeg, gif]\r\n  gf_patterns:
       [ debug_logic, idor, img-traversal, interestingEXT, interestingparams, interestingsubs,
       jsvar, lfi, rce, redirect, sqli, ssrf, ssti, xss]\r\n\r\nvulnerability_scan:\r\n
@@ -58,7 +58,7 @@
       false\r\n  follow_redirect: false\r\n  auto_calibration: false\r\n  timeout:
       10\r\n  # delay: \"0.1-0.2\"\r\n  # match_http_status: '200, 204'\r\n  # max_time:
       0\r\n  recursive: false\r\n  recursive_level: 1\r\n\r\nfetch_url:\r\n  uses_tools:
-      [ gauplus, hakrawler, waybackurls, gospider ]\r\n  intensity: normal\r\n  #
+      [ gau, hakrawler, waybackurls, gospider ]\r\n  intensity: normal\r\n  #
       intensity: deep\r\n  ignore_file_extension: [jpg, png, jpeg, gif]\r\n  gf_patterns:
       [ debug_logic, idor, img-traversal, interestingEXT, interestingparams, interestingsubs,
       jsvar, lfi, rce, redirect, sqli, ssrf, ssti, xss]\r\n\r\nvulnerability_scan:\r\n
@@ -92,7 +92,7 @@
       false\r\n  follow_redirect: false\r\n  auto_calibration: false\r\n  timeout:
       10\r\n  # delay: \"0.1-0.2\"\r\n  # match_http_status: '200, 204'\r\n  # max_time:
       0\r\n  recursive: false\r\n  recursive_level: 1\r\n\r\nfetch_url:\r\n  uses_tools:
-      [ gauplus, hakrawler, waybackurls, gospider ]\r\n  intensity: normal\r\n  #
+      [ gau, hakrawler, waybackurls, gospider ]\r\n  intensity: normal\r\n  #
       intensity: deep\r\n  ignore_file_extension: [jpg, png, jpeg, gif]\r\n  gf_patterns:
       [ debug_logic, idor, img-traversal, interestingEXT, interestingparams, interestingsubs,
       jsvar, lfi, rce, redirect, sqli, ssrf, ssti, xss]\r\n\r\nvulnerability_scan:\r\n
@@ -126,7 +126,7 @@
       false\r\n  follow_redirect: false\r\n  auto_calibration: false\r\n  timeout:
       10\r\n  # delay: \"0.1-0.2\"\r\n  # match_http_status: '200, 204'\r\n  # max_time:
       0\r\n  recursive: false\r\n  recursive_level: 1\r\n\r\nfetch_url:\r\n  uses_tools:
-      [ gauplus, hakrawler, waybackurls, gospider ]\r\n  intensity: normal\r\n  #
+      [ gau, hakrawler, waybackurls, gospider ]\r\n  intensity: normal\r\n  #
       intensity: deep\r\n  ignore_file_extension: [jpg, png, jpeg, gif]\r\n  gf_patterns:
       [ debug_logic, idor, img-traversal, interestingEXT, interestingparams, interestingsubs,
       jsvar, lfi, rce, redirect, sqli, ssrf, ssti, xss]\r\n\r\nvulnerability_scan:\r\n
@@ -160,7 +160,7 @@
       false\r\n  follow_redirect: false\r\n  auto_calibration: false\r\n  timeout:
       10\r\n  # delay: \"0.1-0.2\"\r\n  # match_http_status: '200, 204'\r\n  # max_time:
       0\r\n  recursive: false\r\n  recursive_level: 1\r\n\r\nfetch_url:\r\n  uses_tools:
-      [ gauplus, hakrawler, waybackurls, gospider ]\r\n  intensity: normal\r\n  #
+      [ gau, hakrawler, waybackurls, gospider ]\r\n  intensity: normal\r\n  #
       intensity: deep\r\n  ignore_file_extension: [jpg, png, jpeg, gif]\r\n  gf_patterns:
       [ debug_logic, idor, img-traversal, interestingEXT, interestingparams, interestingsubs,
       jsvar, lfi, rce, redirect, sqli, ssrf, ssti, xss]\r\n\r\nvulnerability_scan:\r\n
