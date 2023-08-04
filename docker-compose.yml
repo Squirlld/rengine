@@ -21,6 +21,8 @@ services:
   redis:
     image: "redis:alpine"
     hostname: redis
+    ports:
+      - 6379:6379
     networks:
       - rengine_network
 
@@ -43,6 +45,7 @@ services:
       - DEBUG=0
       - CELERY_BROKER=redis://redis:6379/0
       - CELERY_BACKEND=redis://redis:6379/0
+      - DOMAIN_NAME=${DOMAIN_NAME}
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -59,7 +62,6 @@ services:
     entrypoint: /usr/src/app/beat-entrypoint.sh
     command: celery -A reNgine beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
     environment:
-      - DEBUG=0
       - CELERY_BROKER=redis://redis:6379/0
       - CELERY_BACKEND=redis://redis:6379/0
       - POSTGRES_DB=${POSTGRES_DB}
@@ -80,6 +82,24 @@ services:
     networks:
       - rengine_network
 
+ hedgedoc:
+      image: quay.io/hedgedoc/hedgedoc:alpine
+      environment:
+        - CMD_DB_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+        - CMD_ALLOW_FREEURL=true
+        - CMD_IMAGE_UPLOAD_TYPE=filesystem
+        - CMD_DOMAIN=${DOMAIN_NAME}
+        - CMD_URL_ADDPORT=true
+      networks:
+        - rengine_network
+      ports:
+        - 3000:3000
+      restart: always
+      depends_on:
+        - db
+      volumes:
+        - hedgedoc_uploads:/usr/src/hedgedoc_uploads
+
   web:
     build:
       context: ./web
@@ -90,6 +110,7 @@ services:
       - DEBUG=0
       - CELERY_BROKER=redis://redis:6379/0
       - CELERY_BACKEND=redis://redis:6379/0
+      - DOMAIN_NAME=${DOMAIN_NAME}
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -113,19 +134,11 @@ services:
       - db
       - celery
       - celery-beat
+      - hedgedoc
     networks:
       rengine_network:
         aliases:
           - rengine
-
-
-  tor:
-    image: peterdavehello/tor-socks-proxy
-    restart: always
-    networks:
-      - rengine_network
-    depends_on:
-      - web
 
   proxy:
     restart: always
@@ -137,6 +150,7 @@ services:
       - web
       - db
       - redis
+      - hedgedoc
     secrets:
       - source: proxy.ca
         target: /etc/nginx/certs/rengine_chain.pem
