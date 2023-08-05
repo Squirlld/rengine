@@ -82,23 +82,23 @@ services:
     networks:
       - rengine_network
 
- hedgedoc:
-      image: quay.io/hedgedoc/hedgedoc:alpine
-      environment:
-        - CMD_DB_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
-        - CMD_ALLOW_FREEURL=true
-        - CMD_IMAGE_UPLOAD_TYPE=filesystem
-        - CMD_DOMAIN=${DOMAIN_NAME}
-        - CMD_URL_ADDPORT=true
-      networks:
-        - rengine_network
-      ports:
-        - 3000:3000
-      restart: always
-      depends_on:
-        - db
-      volumes:
-        - hedgedoc_uploads:/usr/src/hedgedoc_uploads
+  hedgedoc:
+    image: quay.io/hedgedoc/hedgedoc:alpine
+    environment:
+      - CMD_DB_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}:${POSTGRES_PORT}/${POSTGRES_DB}
+      - CMD_ALLOW_FREEURL=true
+      - CMD_IMAGE_UPLOAD_TYPE=filesystem
+      - CMD_DOMAIN=${DOMAIN_NAME}
+      - CMD_URL_ADDPORT=true
+    networks:
+      - rengine_network
+    ports:
+      - 3000:3000
+    restart: always
+    depends_on:
+      - db
+    volumes:
+      - hedgedoc_uploads:/usr/src/hedgedoc_uploads
 
   web:
     build:
