@@ -30,9 +30,7 @@ RUN apt update -y && apt install -y  --no-install-recommends \
     build-essential \
     cmake \
     firefox \
-    gcc \
     git \
-    libpq-dev \
     libpq-dev \
     libpcap-dev \
     netcat \
@@ -50,21 +48,13 @@ RUN apt update -y && apt install -y  --no-install-recommends \
 
 
 # Download and install go 1.20
-RUN wget https://golang.org/dl/go1.20.linux-amd64.tar.gz
-RUN tar -xvf go1.20.linux-amd64.tar.gz
-RUN rm go1.20.linux-amd64.tar.gz
-RUN mv go /usr/local
+RUN wget -qO - https://golang.org/dl/go1.20.linux-amd64.tar.gz | tar -zxvC /usr/local
 
 # Download geckodriver
-RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz
-RUN tar -xvf geckodriver-v0.26.0-linux64.tar.gz
-RUN rm geckodriver-v0.26.0-linux64.tar.gz
-RUN mv geckodriver /usr/bin
+RUN wget -qO - https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-linux64.tar.gz | tar -zxvC /usr/bin
 
 # ENV for Go
 ENV GOROOT="/usr/local/go"
-ENV PATH="${PATH}:${GOROOT}/bin"
-ENV PATH="${PATH}:${GOPATH}/bin"
 
 ENV GOPATH=$HOME/go
 ENV PATH="${PATH}:${GOROOT}/bin:${GOPATH}/bin"
